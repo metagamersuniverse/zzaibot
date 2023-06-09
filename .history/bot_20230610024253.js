@@ -1,6 +1,5 @@
 const { TelegramClient, events } = require('telegram');
 const replicate = require('replicate');
-require('dotenv').config();
 
 const API_ID = "25301791";
 const API_HASH = "77d74707a1e5fdb73c828a26d4e2012a36db2dad";

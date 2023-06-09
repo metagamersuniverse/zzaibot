@@ -1,10 +1,9 @@
 const { TelegramClient, events } = require('telegram');
 const replicate = require('replicate');
-require('dotenv').config();
 
 const API_ID = "25301791";
 const API_HASH = "77d74707a1e5fdb73c828a26d4e2012a36db2dad";
-const BOT_TOKEN = process.env.BOT_TOKEN;  // Use environment variable for bot token
+const BOT_TOKEN = "6247926693:AAEetWXmHmkPIFxTQ64u7redXzz8IZO7TeA";
 
 const imagebot = new TelegramClient('imagebot', {
   apiId: API_ID,
@@ -18,7 +17,7 @@ imagebot.on(events.NewMessage({ pattern: /^[?!/]start/ }), async (event) => {
 });
 
 imagebot.on(events.NewMessage({ pattern: /^[?!/]help/ }), async (event) => {
-  const helpMessage = "Hi! I'm here to help you with the bot.\n\nTo get started, simply send me a photo and I'll generate a description for you.\n\nIf you need additional assistance, you can check out our guide at this link: https://docs.ai-pop.com/guides/ai-pop-bot-use\n\nIf you have any questions or need further assistance, feel free to ask in chat!";
+  const helpMessage = "Hi! I'm here to help you with bot.\n\nTo get started, simply send me a photo and I'll generate a description for you.\n\nIf you need additional assistance, you can check out our guide at this link: https://docs.ai-pop.com/guides/ai-pop-bot-use\n\nIf you have any questions or need further assistance, feel free to ask in chat!";
   await event.reply(helpMessage);
 });
 
@@ -27,7 +26,7 @@ imagebot.on(events.NewMessage({ incoming: true }), async (event) => {
     return;
   }
   if (!event.media) {
-    await event.reply("```Don't send just text please. Please send an image.```");
+    await event.reply("```Don't send Just text please.Please send A Image.```");
     return;
   }
   const file = await event.client.downloadMedia(event.media);
@@ -44,5 +43,5 @@ imagebot.on(events.NewMessage({ incoming: true }), async (event) => {
   await event.reply(result);
 });
 
-imagebot.start();
+imagebot.start({ botToken: BOT_TOKEN });
 imagebot.runUntilDisconnected();
